@@ -111,3 +111,45 @@ print(array_view1)
 #Numpy arrays have an attribute called"shape" that returns a tuple with each index having the number of corresponding elements
 array_shape0=np.array([1,2,3,4])
 print(array_shape0.shape)
+
+array_shape1=np.array([[1,2,3],[5,6,7]])
+print(array_shape1.shape)
+
+
+#numpy array reshaping
+#Reshaping means changing the shape of an array
+#The shape of an array is the number of elements in each dimension
+# by reshaping we can add or remove dimensions or chane number of elements in each dimension
+#we can convert array from one shape to another shape by using "reshape()" function with a numpy array object
+
+
+#Reshpae from 1-D to 2-D
+array_reshape1=np.array([6,7,4,8,2,4])
+print(array_reshape1.ndim)
+print(array_reshape1.shape)
+array_re=array_reshape1.reshape(2,3)
+print(array_re.ndim)
+print(array_re.shape)
+print(array_re)
+
+#Reshape from 1-D to 3-D
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+newarr = arr.reshape(2, 3, 2)
+print(newarr.shape)
+print(newarr)
+
+#Unknown Dimension
+#You are allowed to have one "unknown" dimension.
+#Meaning that you do not have to specify an exact number for one of the dimensions in the reshape method.
+#Pass -1 as the value, and NumPy will calculate this number for you.
+arr1 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+newarr1 = arr1.reshape(2, 2, -1)
+print(newarr1)
+
+#Flatting the arrays
+#Flattening array means converting a multidimensional array into 1D array
+#we can use "reshape(-1)" to do this
+array_2D=np.array([[1,2,3],[5,6,7]])
+print(array_2D,array_2D.shape)
+array_1D=array_2D.reshape(-1)
+print(array_1D,array_1D.shape)
