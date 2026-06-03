@@ -119,7 +119,7 @@ print(array_shape1.shape)
 #numpy array reshaping
 #Reshaping means changing the shape of an array
 #The shape of an array is the number of elements in each dimension
-# by reshaping we can add or remove dimensions or chane number of elements in each dimension
+# by reshaping we can add or remove dimensions or change number of elements in each dimension
 #we can convert array from one shape to another shape by using "reshape()" function with a numpy array object
 
 
@@ -138,6 +138,7 @@ newarr = arr.reshape(2, 3, 2)
 print(newarr.shape)
 print(newarr)
 
+
 #Unknown Dimension
 #You are allowed to have one "unknown" dimension.
 #Meaning that you do not have to specify an exact number for one of the dimensions in the reshape method.
@@ -153,3 +154,56 @@ array_2D=np.array([[1,2,3],[5,6,7]])
 print(array_2D,array_2D.shape)
 array_1D=array_2D.reshape(-1)
 print(array_1D,array_1D.shape)
+
+#Note: There are a lot of functions for changing the shapes of arrays in numpy flatten, ravel and also for rearranging the elements rot90, flip, fliplr, flipud etc. These fall under Intermediate to Advanced section of numpy.
+
+#Numpy array iterating
+#Iterating means going through elements one by one 
+#As we deal with multi dimensional arrays in numpy , we can do this by using basic "for" loop of python
+#Iterating Arrays using "nditer()"
+#the function "nditer" is a helping function that can be used from very basic to very advanced iterations. it solves some basic issues which we face in iterations,lets go through it with examples
+
+#Iterating on each scalar element
+#in basic "for" loops, Iterating througheach scalar of an array we need to use n for loops which can be difficult to write for arrays with higher dimensionality
+array_iter=np.array([[[1,2,3],[4,5,6]],[[0,9,8],[7,6,5]]])
+for x in np.nditer(array_iter):
+    print(x)
+
+#Numpy joining array
+#Joining means putting contents of two or more arrays in a single array
+#we join array based on axes
+#we pass a sequence of arrays that we want to join to the concatenate() function , along with the axis . if axis is not explicitly passed it is taken as 0
+#concatenate of with out axis 
+array_concat1=np.array([11,22,33])
+array_concat2=np.array([0,99,88])
+print(array_concat1,array_concat2)
+array_concat=np.concatenate((array_concat1,array_concat2),axis=0)
+print(array_concat)
+
+#conate array with axis
+array_con1=np.array([[1,2],[3,4]])
+array_con2=np.array([[0,9],[8,7]])
+array_concatewith=np.concatenate((array_con1,array_con2),axis=1)
+print(array_concatewith)
+
+#Joining Arrays Using Stack Functions
+#Stacking is same as concatenation, the only difference is that stacking is done along a new axis.
+#We can concatenate two 1-D arrays along the second axis which would result in putting them one over the other, ie. stacking.
+#We pass a sequence of arrays that we want to join to the stack() method along with the axis. If axis is not explicitly passed it is taken as 0.
+array_stack1=np.array([1,2,3,4])
+array_stack2=np.array([6,7,8,9])
+array_stack=np.stack((array_stack1,array_stack2),axis=1)    #joins a sequence of arrays along a new axis (increase dimensions)
+print("array stack joing using stack() function")
+print(array_stack)
+
+array_stack_horizontal=np.hstack((array_stack1,array_stack2)) #Numpy provides a helper function : hstack() to stack along rows
+print("array stack joining using hstack() function")
+print(array_stack_horizontal)
+
+array_stack_vertical=np.vstack((array_stack1,array_stack2))    #Numpy provides a helper function : vstack() to stack along columns
+print("array stack joining using vstack() function")
+print(array_stack_vertical)
+
+array_stack_depth=np.dstack((array_stack1,array_stack2))     #dstack() to stack along height , which is the same as depth
+print("array stack joining using dstack() function")
+print(array_stack_depth)
